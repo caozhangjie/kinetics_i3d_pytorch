@@ -75,7 +75,7 @@ def transfer_weights(tf_checkpoint, pt_checkpoint, batch_size, modality='rgb'):
         # Save pytorch weights for future loading
         i3nception_state_dict = i3nception_pt.cpu().state_dict()
         torch.save(i3nception_state_dict, pt_checkpoint)
-
+        '''
         # Load data
         for i, (input_2d, target) in enumerate(loader):
             input_2d = torch.from_numpy(input_2d.numpy())
@@ -130,6 +130,7 @@ def transfer_weights(tf_checkpoint, pt_checkpoint, batch_size, modality='rgb'):
                     min_v, max_v, out_pt_np.mean()))
             loss = criterion(out_pt, torch.ones_like(out_pt))
             loss.backward()
+        '''
 
 
 if __name__ == "__main__":
